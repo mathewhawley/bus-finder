@@ -28,25 +28,25 @@ $(document).ready(function() {
   /* Initialize map
      ========================================================================== */
 
-  function initialize() {
-    var mapDiv = document.getElementById('js-map-canvas');
-    var london = new google.maps.LatLng(51.508800, -0.127477);
-    var mapOptions = {
-      center: london,
-      zoom: 12,
-      scrollwheel: false,
-      zoomControlOptions: {
-        style: google.maps.ZoomControlStyle.LARGE,
-        position: google.maps.ControlPosition.RIGHT
-      },
-      streetViewControl: false,
-      panControl: false,
-      mapTypeControl: false
-    };
-    map = new google.maps.Map(mapDiv, mapOptions);
-  }
+  // function initialize() {
+  //   var mapDiv = document.getElementById('js-map-canvas');
+  //   var london = new google.maps.LatLng(51.508800, -0.127477);
+  //   var mapOptions = {
+  //     center: london,
+  //     zoom: 12,
+  //     scrollwheel: false,
+  //     zoomControlOptions: {
+  //       style: google.maps.ZoomControlStyle.LARGE,
+  //       position: google.maps.ControlPosition.RIGHT
+  //     },
+  //     streetViewControl: false,
+  //     panControl: false,
+  //     mapTypeControl: false
+  //   };
+  //   map = new google.maps.Map(mapDiv, mapOptions);
+  // }
 
-  google.maps.event.addDomListener(window, 'load', initialize);
+  // google.maps.event.addDomListener(window, 'load', initialize);
 
 
   /* Set map to current location
