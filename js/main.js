@@ -1,21 +1,22 @@
 $(document).ready(function() {
 
-  var map = null;
+  var mainMap = null;
 
   var App = function() {
 
     function init() {
-      loadMainMap();
+      createMainMap();
     }
 
-    function loadMainMap() {
-      map = new Map();
-      google.maps.event.addDomListener(window, 'load', map.mainInit());
+    function createMainMap() {
+      var map = new Map();
+      mainMap = map.mainInit();
     }
 
     return {
       init: init
     };
+
   };
 
   var busFinder = new App();

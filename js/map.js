@@ -14,7 +14,7 @@ var Map = function() {
       panControl: false,
       mapTypeControl: false
     };
-    new google.maps.Map(mapDiv, mapOptions);
+    return new google.maps.Map(mapDiv, mapOptions);
   }
 
   return {
