@@ -9,9 +9,19 @@ var GeoSearch = function() {
 
   function checkForGeolocation() {
     if ('geolocation' in navigator)
-      console.log('Geolocation available');
+      navigator.geolocation.getCurrentPosition(success, fail, { timeout: 10000 });
     else
       alert('Sorry, geolocation is not available. Please check your location settings.');
+  }
+
+  function success(position) {
+    var lat = position.coords.latitude,
+        lng = position.coords.longitude,
+        position = new google.maps.LatLng(lat, lng);
+  }
+
+  function fail() {
+    alert('Unable to find current location, please try again');
   }
 
   return {
