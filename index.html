@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>BusFinder</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <script src="js/marker-with-label.js"></script>
+    <script src="js/jquery-2.1.3.js"></script>
+    <script src="js/script.js"></script>
+  </head>
+  <body>
+    <div class="dashboard">
+
+      <div class="header">
+        <img class="logo" src="../images/logo/bus_finder_logo.svg" alt="Bus Finder">
+        <p id="js-nearest-stops" class="btn">Find stops near me</p>
+        <p id="js-reset-map" class="btn-reset"><i class="fa fa-refresh"></i></p>
+        <input id="js-search" class="search-field" type="text" placeholder="Search for stops near...">
+      </div> <!-- end '.header' -->
+
+      <div id="js-results-list">
+        <p class="welcome-message">Welcome to BusFinder.</p>
+        <p class="welcome-message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi alias vero qui, at dolor enim reprehenderit distinctio ipsam odit.</p>
+      </div>
+
+    </div> <!-- end '.dashboard' -->
+
+    <div id="js-map-canvas"></div>
+
+    <!-- Modal -->
+    <div id="js-modal-overlay">
+      <div id="js-modal-window">
+        <div id="js-modal-close-btn">×</div>
+        <div id="js-modal-route-info"></div>
+        <div id="js-modal-map"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
