@@ -6,11 +6,17 @@ $(document).ready(function() {
 
     function init() {
       createMainMap();
+      enableGeoSearch();
     }
 
     function createMainMap() {
       var map = new Map();
       mainMap = map.mainInit();
+    }
+
+    function enableGeoSearch() {
+      var geoSearch = new GeoSearch();
+      geoSearch.init();
     }
 
     return {

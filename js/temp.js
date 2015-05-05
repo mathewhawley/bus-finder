@@ -52,24 +52,24 @@ $(document).ready(function() {
   /* Set map to current location
      ========================================================================== */
 
-  document.getElementById('js-nearest-stops').addEventListener('click', function() {
+  // document.getElementById('js-nearest-stops').addEventListener('click', function() {
 
-    // Clear results container of any old list items
-    resultsContainer.innerHTML = '';
-    // Show loader
-    resultsContainer.appendChild(loader);
+  //   // Clear results container of any old list items
+  //   resultsContainer.innerHTML = '';
+  //   // Show loader
+  //   resultsContainer.appendChild(loader);
 
-    // Clear any markers that are on the map
-    if (markerArray.length > 0)
-      deleteMarkers();
+  //   // Clear any markers that are on the map
+  //   if (markerArray.length > 0)
+  //     deleteMarkers();
 
-    // Check to see if geolocation object exists
-    if ('geolocation' in navigator)
-      navigator.geolocation.getCurrentPosition(success, fail, {timeout: 10000});
-    else
-      alert('Sorry, geolocation is not available. Please check your location settings.');
+  //   // Check to see if geolocation object exists
+  //   if ('geolocation' in navigator)
+  //     navigator.geolocation.getCurrentPosition(success, fail, {timeout: 10000});
+  //   else
+  //     alert('Sorry, geolocation is not available. Please check your location settings.');
 
-  });
+  // });
 
 
 
