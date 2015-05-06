@@ -6,8 +6,7 @@ $(document).ready(function() {
 
     function init() {
       createMainMap();
-      enableGeoSearch();
-      enablePlaceSearch();
+      enableSearch();
     }
 
     function createMainMap() {
@@ -15,14 +14,9 @@ $(document).ready(function() {
       map.mainInit();
     }
 
-    function enableGeoSearch() {
-      var geoSearch = new GeoSearch(map);
-      geoSearch.init();
-    }
-
-    function enablePlaceSearch() {
-      var placeSearch = new PlaceSearch(map);
-      placeSearch.init();
+    function enableSearch() {
+      var search = new Search(map);
+      search.init();
     }
 
     return {
