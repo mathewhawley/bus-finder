@@ -113,20 +113,20 @@ $(document).ready(function() {
      ========================================================================== */
 
   // On geolocation success, create new google maps position variable
-  function success(position) {
-    var currentLat = position.coords.latitude,
-        currentLng = position.coords.longitude,
-        newPosition = new google.maps.LatLng(currentLat, currentLng);
+  // function success(position) {
+  //   var currentLat = position.coords.latitude,
+  //       currentLng = position.coords.longitude,
+  //       newPosition = new google.maps.LatLng(currentLat, currentLng);
 
-    setNewPosition(newPosition);
-    getBusStops();
-  }
+  //   setNewPosition(newPosition);
+  //   getBusStops();
+  // }
 
-  // On geolocation fail, alert user
-  function fail() {
-    loader.style.display = 'none';
-    alert('Unable to find current location, please try again');
-  }
+  // // On geolocation fail, alert user
+  // function fail() {
+  //   loader.style.display = 'none';
+  //   alert('Unable to find current location, please try again');
+  // }
 
 
 

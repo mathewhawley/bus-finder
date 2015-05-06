@@ -1,4 +1,4 @@
-var GeoSearch = function() {
+var GeoSearch = function(map) {
 
   var resultsContainer = document.getElementById('js-results-list');
 
@@ -9,15 +9,20 @@ var GeoSearch = function() {
 
   function checkForGeolocation() {
     if ('geolocation' in navigator)
-      navigator.geolocation.getCurrentPosition(success, fail, { timeout: 10000 });
+      getLocation();
     else
       alert('Sorry, geolocation is not available. Please check your location settings.');
+  }
+
+  function getLocation() {
+    navigator.geolocation.getCurrentPosition(success, fail, { timeout: 10000 });
   }
 
   function success(position) {
     var lat = position.coords.latitude,
         lng = position.coords.longitude,
-        position = new google.maps.LatLng(lat, lng);
+        newCoords = new google.maps.LatLng(lat, lng);
+    map.setCurrentPosition(newCoords);
   }
 
   function fail() {

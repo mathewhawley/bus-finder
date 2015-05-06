@@ -1,5 +1,7 @@
 var Map = function() {
 
+  var mainMap = null;
+
   function mainInit() {
     var mapDiv = document.getElementById('js-map-canvas');
     var mapOptions = {
@@ -14,11 +16,19 @@ var Map = function() {
       panControl: false,
       mapTypeControl: false
     };
-    return new google.maps.Map(mapDiv, mapOptions);
+    mainMap = new google.maps.Map(mapDiv, mapOptions);
+  }
+
+  function setCurrentPosition(newCoords) {
+    mainMap.setOptions({
+      center: newCoords,
+      zoom: 17
+    });
   }
 
   return {
-    mainInit: mainInit
+    mainInit: mainInit,
+    setCurrentPosition: setCurrentPosition
   };
 
 };

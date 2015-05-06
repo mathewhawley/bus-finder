@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
-  var mainMap = null;
-
   var App = function() {
+
+    var map = null;
 
     function init() {
       createMainMap();
@@ -10,12 +10,12 @@ $(document).ready(function() {
     }
 
     function createMainMap() {
-      var map = new Map();
-      mainMap = map.mainInit();
+      map = new Map();
+      map.mainInit();
     }
 
     function enableGeoSearch() {
-      var geoSearch = new GeoSearch();
+      var geoSearch = new GeoSearch(map);
       geoSearch.init();
     }
 
