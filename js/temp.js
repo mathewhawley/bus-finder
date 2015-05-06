@@ -134,13 +134,13 @@ $(document).ready(function() {
      ========================================================================== */
 
   // Set the new map position
-  function setNewPosition(position) {
-    map.setOptions({
-      center: position,
-      zoom: 17
-    });
-    addMarker(position);
-  }
+  // function setNewPosition(position) {
+  //   map.setOptions({
+  //     center: position,
+  //     zoom: 17
+  //   });
+  //   addMarker(position);
+  // }
 
   // Add custom marker for current location
   // function addMarker(position) {
@@ -155,21 +155,21 @@ $(document).ready(function() {
   // }
 
   // Get bus stops within map bounds,
-  function getBusStops() {
-    var swLat = map.getBounds().Ea.A,
-        swLng = map.getBounds().wa.j,
-        neLat = map.getBounds().Ea.j,
-        neLng = map.getBounds().wa.A,
-        url = 'http://digitaslbi-id-test.herokuapp.com/bus-stops?northEast=' + neLat + ',' + neLng + '&southWest=' + swLat + ',' + swLng;
+  // function getBusStops() {
+  //   var swLat = map.getBounds().Ea.A,
+  //       swLng = map.getBounds().wa.j,
+  //       neLat = map.getBounds().Ea.j,
+  //       neLng = map.getBounds().wa.A,
+  //       url = 'http://digitaslbi-id-test.herokuapp.com/bus-stops?northEast=' + neLat + ',' + neLng + '&southWest=' + swLat + ',' + swLng;
 
-    // Request bus stops via API
-    request('GET', url).done(function(response) {
-      // Remove loader
-      resultsContainer.innerHTML = '';
-      addNearestMarkers(response);
-      addResultsToDashboard(response.markers);
-    });
-  }
+  //   // Request bus stops via API
+  //   request('GET', url).done(function(response) {
+  //     // Remove loader
+  //     resultsContainer.innerHTML = '';
+  //     addNearestMarkers(response);
+  //     addResultsToDashboard(response.markers);
+  //   });
+  // }
 
   // Create and add markers to map
   function addNearestMarkers(response) {

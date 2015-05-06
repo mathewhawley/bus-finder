@@ -14,6 +14,25 @@ var PlaceSearch = function(map) {
     newPos = new google.maps.LatLng(newLat, newLng);
     map.setNewLocation(newPos);
     map.addMarker(newPos);
+    getNearestStops();
+  }
+
+  function getNearestStops() {
+    var markers = null,
+        url = map.getNewBounds();
+
+    $.ajax({ type: 'GET', url: url, dataType: 'jsonp' })
+    .done(function(response) {
+      map.addNearestMarkers(response.markers);
+    });
+  }
+
+  function request(type, url, dataType) {
+    return $.ajax({
+      type: type,
+      url: url,
+      dataType: dataType
+    });
   }
 
   return {
