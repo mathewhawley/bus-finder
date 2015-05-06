@@ -53,10 +53,12 @@ var Modal = function() {
     var routeInfoDiv = document.createElement('div');
     routeInfoDiv.setAttribute('class', 'modal-route-info');
 
-    if (el.stopIndicator === null)
+    if (el.stopIndicator === null) {
       var stopIndicator = '';
-    else
+    }
+    else {
       var stopIndicator = el.stopIndicator;
+    }
 
     // Add header elements
     routeInfoDiv.innerHTML +=
@@ -73,10 +75,12 @@ var Modal = function() {
     // Loop over routes and add to each new routeInfoDiv element
     arrivals.forEach(function(route) {
       // If the eta for a route is 'due', don't include 'min' after the time
-      if (route.estimatedWait === 'due')
+      if (route.estimatedWait === 'due') {
         var eta = '<p class="modal-route-eta">Due</p>';
-      else
+      }
+      else {
         var eta = '<p class="modal-route-eta">' + route.estimatedWait.split(' ')[0] + '<span class="modal-route-eta-min">min</span></p>';
+      }
 
       var routes = routeInfoDiv.lastChild;
       routes.innerHTML += 

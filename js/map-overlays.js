@@ -4,8 +4,9 @@ var MapOverlay = function(mainMap) {
   var modal = new Modal();
 
   function addMarker(position) {
-    if (markerArray.length > 0)
+    if (markerArray.length > 0) {
       deleteMarkers();
+    }
 
     var customMarkerImage = '../images/markers/user_location_marker.svg';
     var marker = new google.maps.Marker({
@@ -31,7 +32,6 @@ var MapOverlay = function(mainMap) {
       });
 
       attachInfoWindow(marker, el);
-      console.log(el);
       modal.createModal(marker, el);
 
       markerArray.push(marker);
