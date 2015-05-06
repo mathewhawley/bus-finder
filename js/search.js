@@ -47,9 +47,8 @@ var Search = function(map) {
   }
 
   function getNearestStops() {
-    var markers = null,
-        url = map.getNewBounds();
-
+    var newBounds = map.getNewBounds();
+    var url = 'http://digitaslbi-id-test.herokuapp.com/bus-stops?northEast=' + newBounds[0] + ',' + newBounds[1] + '&southWest=' + newBounds[2] + ',' + newBounds[3];
     $.ajax({ type: 'GET', url: url, dataType: 'jsonp' })
     .done(function(response) {
       map.addNearestMarkers(response.markers);

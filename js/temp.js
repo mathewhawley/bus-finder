@@ -172,27 +172,27 @@ $(document).ready(function() {
   // }
 
   // Create and add markers to map
-  function addNearestMarkers(response) {
-    response.markers.forEach(function(item) {
-      var position = new google.maps.LatLng(item.lat, item.lng);
-      var customMarkerImage = '../images/markers/bus_stop_marker.svg';
-      var marker = new MarkerWithLabel({
-        position: position,
-        map: map,
-        icon: customMarkerImage,
-        labelContent: item.stopIndicator,
-        labelAnchor: new google.maps.Point(10, 34),
-        labelClass: 'marker-label',
-        labelInBackground: false
-      });
+  // function addNearestMarkers(response) {
+  //   response.markers.forEach(function(item) {
+  //     var position = new google.maps.LatLng(item.lat, item.lng);
+  //     var customMarkerImage = '../images/markers/bus_stop_marker.svg';
+  //     var marker = new MarkerWithLabel({
+  //       position: position,
+  //       map: map,
+  //       icon: customMarkerImage,
+  //       labelContent: item.stopIndicator,
+  //       labelAnchor: new google.maps.Point(10, 34),
+  //       labelClass: 'marker-label',
+  //       labelInBackground: false
+  //     });
 
-      // Attach listeners and modals to each marker
-      createModalForMarkers(item, marker);
-      // Add info window to each marker
-      addInfoWindow(marker, item);
-      markerArray.push(marker);
-    });
-  }
+  //     // Attach listeners and modals to each marker
+  //     createModalForMarkers(item, marker);
+  //     // Add info window to each marker
+  //     addInfoWindow(marker, item);
+  //     markerArray.push(marker);
+  //   });
+  // }
 
   // List results on the dashboard
   function addResultsToDashboard(list) {
