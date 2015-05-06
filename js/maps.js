@@ -5,7 +5,7 @@ var Map = function() {
 
   function mainInit() {
     createMainMap();
-    initOverlays();
+    mapOverlay = new MapOverlay(mainMap);
   }
 
   function createMainMap() {
@@ -23,10 +23,6 @@ var Map = function() {
       mapTypeControl: false
     };
     mainMap = new google.maps.Map(mapDiv, mapOptions);
-  }
-
-  function initOverlays() {
-    mapOverlay = new MapOverlay(mainMap);
   }
 
   function addMarker(position) {

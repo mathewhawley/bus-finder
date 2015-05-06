@@ -1,6 +1,7 @@
 var Search = function(map) {
 
-  var autocomplete = null;
+  var autocomplete = null,
+      modal = null;
 
   // Loader that will display while performing AJAX requests
   var loader = document.createElement('div');
@@ -22,6 +23,8 @@ var Search = function(map) {
     var searchField = document.getElementById('js-search');
     autocomplete = new google.maps.places.Autocomplete(searchField);
     google.maps.event.addListener(autocomplete, 'place_changed', repositionMap);
+
+    modal = new Modal();
   }
 
   // Place search
@@ -39,13 +42,7 @@ var Search = function(map) {
 
   // Geolocation search
   function checkForGeolocation() {
-
-    if ('geolocation' in navigator) {
-      getLocation();
-    }
-    else {
-      alert('Sorry, geolocation is not available. Please check your location settings.');
-    }
+    ('geolocation' in navigator) ? getLocation() : alert('Sorry, geolocation is not available. Please check your location settings.');
   }
 
   function getLocation() {
@@ -104,7 +101,7 @@ var Search = function(map) {
         stopRoutes.innerHTML += '<p class="stop-route-item">' + route.name + '</p>'
       });
       // Create modal for each listed bus stop
-      // createModal(item, itemWrapper);
+      modal.createModal(null, el, itemWrapper);
       // Append each complete result to the view
       resultsContainer.appendChild(itemWrapper);
     });

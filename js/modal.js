@@ -1,22 +1,44 @@
 var Modal = function() {
 
   var modal = document.getElementById('js-modal-overlay');
-  var modalCloseBtn = document.getElementById('js-modal-close-btn');
-  modalCloseBtn.addEventListener('click', toggleModal);
   var modalRouteInfo = document.getElementById('js-modal-route-info');
+  var modalCloseBtn = document.getElementById('js-modal-close-btn');
+  modalCloseBtn.addEventListener('click', closeModal);
 
-  function createModal(marker, el) {
+  function createModal(marker, el, listElement) {
+    if (marker === null) {
+      dashboardModal(listElement, el);
+    }
+    else if (listElement === null) {
+      markerModal(marker, el);
+    }
+  }
+
+  // Attaches modal to each listed element on dashboard
+  function dashboardModal(listElement, el) {
+    listElement.addEventListener('click', function() {
+      buildModal(el);
+    });
+  }
+
+  // Attaches modal to each marker
+  function markerModal(marker, el) {
     google.maps.event.addListener(marker, 'click', function() {
-      toggleModal();
-      modalRouteInfo.innerHTML = '';
-      createModalMap(el);
+      buildModal(el);
+    });
+  }
 
-      var url = 'http://digitaslbi-id-test.herokuapp.com/bus-stops/' + el.id;
+  // Opens the modal, adds map, gets departure info, appends to side panel
+  function buildModal(el) {
+    openModal();
+    modalRouteInfo.innerHTML = '';
+    createModalMap(el);
 
-      $.ajax({ type: 'GET', url: url, dataType: 'jsonp' })
-      .done(function(response) {
-        appendDepartures(response.arrivals, el)
-      });
+    var url = 'http://digitaslbi-id-test.herokuapp.com/bus-stops/' + el.id;
+
+    $.ajax({ type: 'GET', url: url, dataType: 'jsonp' })
+    .done(function(response) {
+      appendDepartures(response.arrivals, el)
     });
   }
 
@@ -53,14 +75,9 @@ var Modal = function() {
     var routeInfoDiv = document.createElement('div');
     routeInfoDiv.setAttribute('class', 'modal-route-info');
 
-    if (el.stopIndicator === null) {
-      var stopIndicator = '';
-    }
-    else {
-      var stopIndicator = el.stopIndicator;
-    }
+    var stopIndicator = (el.stopIndicator === null) ? '' : el.stopIndicator;
 
-    // Add header elements
+    // Add structure and content
     routeInfoDiv.innerHTML +=
       '<div class="modal-route-info-header">' +
         '<div class="modal-route-header-col-left">' +
@@ -82,8 +99,7 @@ var Modal = function() {
         var eta = '<p class="modal-route-eta">' + route.estimatedWait.split(' ')[0] + '<span class="modal-route-eta-min">min</span></p>';
       }
 
-      var routes = routeInfoDiv.lastChild;
-      routes.innerHTML += 
+      routeInfoDiv.lastChild.innerHTML += 
         '<div class="modal-route-item">' +
           '<div class="modal-route-col-left">' +
             '<p class="modal-route-name">' + route.routeName + '</p>' +
@@ -98,8 +114,12 @@ var Modal = function() {
     modalRouteInfo.appendChild(routeInfoDiv);
   }
 
-  function toggleModal() {
-    modal.style.visibility = (modal.style.visibility === 'visible') ? 'hidden' : 'visible';
+  function openModal() {
+    modal.style.visibility = 'visible';
+  }
+
+  function closeModal() {
+    modal.style.visibility = 'hidden';
   }
 
   return {

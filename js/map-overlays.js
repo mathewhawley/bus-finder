@@ -32,7 +32,7 @@ var MapOverlay = function(mainMap) {
       });
 
       attachInfoWindow(marker, el);
-      modal.createModal(marker, el);
+      modal.createModal(marker, el, null);
 
       markerArray.push(marker);
     });
