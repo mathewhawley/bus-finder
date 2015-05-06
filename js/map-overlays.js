@@ -1,6 +1,7 @@
 var MapOverlay = function(mainMap) {
 
   var markerArray = [];
+  var modal = new Modal();
 
   function addMarker(position) {
     if (markerArray.length > 0)
@@ -12,7 +13,6 @@ var MapOverlay = function(mainMap) {
       map: mainMap,
       icon: customMarkerImage
     });
-
     markerArray.push(marker);
   }
 
@@ -31,6 +31,9 @@ var MapOverlay = function(mainMap) {
       });
 
       attachInfoWindow(marker, el);
+      console.log(el);
+      modal.createModal(marker, el);
+
       markerArray.push(marker);
     });
   }
@@ -56,7 +59,7 @@ var MapOverlay = function(mainMap) {
     google.maps.event.addListener(el, 'domready', function() {
       var iwOuter = $('.gm-style-iw');
       var iwBackground = iwOuter.prev();
-      
+
       // Removes close button
       iwOuter.next().css({'display' : 'none'});
       // Removes arrow and background arrow
