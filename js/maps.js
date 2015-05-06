@@ -1,6 +1,7 @@
 var Map = function() {
 
-  var mainMap = null;
+  var mainMap = null,
+      markerArray = [];
 
   function mainInit() {
     var mapDiv = document.getElementById('js-map-canvas');
@@ -27,12 +28,28 @@ var Map = function() {
   }
 
   function addMarker(position) {
+    if (markerArray.length > 0)
+      deleteMarkers();
+
     var customMarkerImage = '../images/markers/user_location_marker.svg';
     var marker = new google.maps.Marker({
       position: position,
       map: mainMap,
       icon: customMarkerImage
     });
+
+    markerArray.push(marker);
+  }
+
+  function clearMarkers() {
+    for (var i = 0; i < markerArray.length; i++) {
+      markerArray[i].setMap(null);
+    }
+  }
+
+  function deleteMarkers() {
+    clearMarkers();
+    markerArray = [];
   }
 
 
