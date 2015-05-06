@@ -33,9 +33,7 @@ var Modal = function() {
     openModal();
     modalRouteInfo.innerHTML = '';
     createModalMap(el);
-
     var url = 'http://digitaslbi-id-test.herokuapp.com/bus-stops/' + el.id;
-
     $.ajax({ type: 'GET', url: url, dataType: 'jsonp' })
     .done(function(response) {
       appendDepartures(response.arrivals, el)
@@ -74,9 +72,7 @@ var Modal = function() {
     // Create containing div and set class attribute
     var routeInfoDiv = document.createElement('div');
     routeInfoDiv.setAttribute('class', 'modal-route-info');
-
     var stopIndicator = (el.stopIndicator === null) ? '' : el.stopIndicator;
-
     // Add structure and content
     routeInfoDiv.innerHTML +=
       '<div class="modal-route-info-header">' +
@@ -88,7 +84,6 @@ var Modal = function() {
         '</div>' +
       '</div>' +
       '<div class="modal-departure-info"></div>';
-
     // Loop over routes and add to each new routeInfoDiv element
     arrivals.forEach(function(route) {
       // If the eta for a route is 'due', don't include 'min' after the time
@@ -98,7 +93,6 @@ var Modal = function() {
       else {
         var eta = '<p class="modal-route-eta">' + route.estimatedWait.split(' ')[0] + '<span class="modal-route-eta-min">min</span></p>';
       }
-
       routeInfoDiv.lastChild.innerHTML += 
         '<div class="modal-route-item">' +
           '<div class="modal-route-col-left">' +
@@ -110,7 +104,6 @@ var Modal = function() {
           '</div>' +
         '</div>';
     });
-
     modalRouteInfo.appendChild(routeInfoDiv);
   }
 

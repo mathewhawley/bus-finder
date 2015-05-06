@@ -20,22 +20,18 @@ var Search = function(map) {
   function init() {
     var btn = document.getElementById('js-nearest-stops');
     btn.addEventListener('click', checkForGeolocation);
-
     var searchField = document.getElementById('js-search');
     autocomplete = new google.maps.places.Autocomplete(searchField);
     google.maps.event.addListener(autocomplete, 'place_changed', repositionMap);
-
     modal = new Modal();
   }
 
   // Place search
   function repositionMap() {
     addLoader();
-
     var newLat = autocomplete.getPlace().geometry.location.j,
         newLng = autocomplete.getPlace().geometry.location.C;
     newPos = new google.maps.LatLng(newLat, newLng);
-
     map.setNewLocation(newPos);
     map.addMarker(newPos);
     getNearestStops();
@@ -81,14 +77,11 @@ var Search = function(map) {
   // Add nearest bus stop information to dashboard
   function addResultsToDashboard(list) {
     resultsContainer.innerHTML = '';
-
     list.forEach(function(el) {
       var itemWrapper = document.createElement('div');
       itemWrapper.setAttribute('class', 'bus-stop-item');
-
       var stopIndicator = (el.stopIndicator === null) ? '' : el.stopIndicator;
       var towards = (el.towards === null) ? 'n/a' : el.towards;
-
       itemWrapper.innerHTML +=
       '<div class="bus-stop-item-contents">' +
         '<div class="list-col-left">' +
@@ -100,7 +93,6 @@ var Search = function(map) {
           '<div class="stop-routes"></div>' +
         '</div>' + 
       '</div>';
-
       // Loop over routes and add to each new itemWrapper element
       el.routes.forEach(function(route) {
         var stopRoutes = itemWrapper.firstChild.lastChild.lastChild;

@@ -8,7 +8,6 @@ var MapOverlay = function(mainMap) {
     if (markerArray.length > 0) {
       deleteMarkers();
     }
-
     var customMarkerImage = '../images/markers/user_location_marker.svg';
     var marker = new google.maps.Marker({
       position: position,
@@ -32,10 +31,8 @@ var MapOverlay = function(mainMap) {
         labelClass: 'marker-label',
         labelInBackground: false
       });
-
       attachInfoWindow(marker, el);
       modal.createModal(marker, el, null);
-
       markerArray.push(marker);
     });
   }
@@ -43,17 +40,13 @@ var MapOverlay = function(mainMap) {
   // Attaches info window to a marker
   function attachInfoWindow(marker, el) {
     var infoWindowContent = '<p class="iw-title">' + el.name + '</p>';
-
     el.routes.forEach(function(route) {
       infoWindowContent += '<p class="iw-route-item">' + route.name + '</p>'
     });
-
     var infowindow = new google.maps.InfoWindow({
       content: infoWindowContent
     });
-
     styleInfoWindow(infowindow);
-
     google.maps.event.addListener(marker, 'mouseover', function() { infowindow.open(mainMap, marker); });
     google.maps.event.addListener(marker, 'mouseout', function() { infowindow.close(mainMap, marker); });
   }
