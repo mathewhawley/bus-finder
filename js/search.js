@@ -16,6 +16,7 @@ var Search = function(map) {
   // Select element that will display bus stop information
   var resultsContainer = document.getElementById('js-results-list');
 
+  // Adds listeners to 'Find stops near me' and search field elements
   function init() {
     var btn = document.getElementById('js-nearest-stops');
     btn.addEventListener('click', checkForGeolocation);
@@ -45,11 +46,13 @@ var Search = function(map) {
     ('geolocation' in navigator) ? getLocation() : alert('Sorry, geolocation is not available. Please check your location settings.');
   }
 
+  // Get the current location
   function getLocation() {
     addLoader();
     navigator.geolocation.getCurrentPosition(success, fail, { timeout: 10000 });
   }
 
+  // Geolocation success
   function success(position) {    
     var lat = position.coords.latitude,
         lng = position.coords.longitude,
@@ -59,10 +62,12 @@ var Search = function(map) {
     getNearestStops();
   }
 
+  // Geolocation fail
   function fail() {
     alert('Unable to find current location, please try again');
   }
 
+  // Get stops nearest to selected position
   function getNearestStops() {
     var newBounds = map.getNewBounds();
     var url = 'http://digitaslbi-id-test.herokuapp.com/bus-stops?northEast=' + newBounds[0] + ',' + newBounds[1] + '&southWest=' + newBounds[2] + ',' + newBounds[3];
@@ -73,6 +78,7 @@ var Search = function(map) {
     });
   }
 
+  // Add nearest bus stop information to dashboard
   function addResultsToDashboard(list) {
     resultsContainer.innerHTML = '';
 
@@ -107,6 +113,7 @@ var Search = function(map) {
     });
   }
 
+  // What it says on the tin
   function addLoader() {
     resultsContainer.innerHTML = '';
     resultsContainer.appendChild(loader);

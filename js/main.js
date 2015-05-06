@@ -4,6 +4,11 @@ $(document).ready(function() {
 
     var map = null;
 
+    // Reset map
+    document.getElementById('js-reset-map').addEventListener('click', function() {
+      document.location.reload();
+    });
+
     function init() {
       createMainMap();
       enableSearch();

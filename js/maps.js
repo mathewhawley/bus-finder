@@ -3,6 +3,7 @@ var Map = function() {
   var mainMap = null,
       mapOverlay = null;
 
+  // Creates main map and overlay instance (that will handle markers and info windows)
   function mainInit() {
     createMainMap();
     mapOverlay = new MapOverlay(mainMap);

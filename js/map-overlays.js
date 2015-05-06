@@ -3,6 +3,7 @@ var MapOverlay = function(mainMap) {
   var markerArray = [];
   var modal = new Modal();
 
+  // Adds marker to specified location – either through geolocation or place search
   function addMarker(position) {
     if (markerArray.length > 0) {
       deleteMarkers();
@@ -17,6 +18,7 @@ var MapOverlay = function(mainMap) {
     markerArray.push(marker);
   }
 
+  // Adds markers within the map bounds of specified location
   function addNearestMarkers(markers) {
     markers.forEach(function(el) {
       var position = new google.maps.LatLng(el.lat, el.lng);
@@ -38,6 +40,7 @@ var MapOverlay = function(mainMap) {
     });
   }
 
+  // Attaches info window to a marker
   function attachInfoWindow(marker, el) {
     var infoWindowContent = '<p class="iw-title">' + el.name + '</p>';
 
@@ -55,6 +58,7 @@ var MapOverlay = function(mainMap) {
     google.maps.event.addListener(marker, 'mouseout', function() { infowindow.close(mainMap, marker); });
   }
 
+  // Adjusts info window styling
   function styleInfoWindow(el) {
     google.maps.event.addListener(el, 'domready', function() {
       var iwOuter = $('.gm-style-iw');
