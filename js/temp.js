@@ -143,16 +143,16 @@ $(document).ready(function() {
   }
 
   // Add custom marker for current location
-  function addMarker(position) {
-    var customMarkerImage = '../images/markers/user_location_marker.svg';
-    var marker = new google.maps.Marker({
-      position: position,
-      map: map,
-      icon: customMarkerImage,
-      title: 'You are here'
-    });
-    markerArray.push(marker);
-  }
+  // function addMarker(position) {
+  //   var customMarkerImage = '../images/markers/user_location_marker.svg';
+  //   var marker = new google.maps.Marker({
+  //     position: position,
+  //     map: map,
+  //     icon: customMarkerImage,
+  //     title: 'You are here'
+  //   });
+  //   markerArray.push(marker);
+  // }
 
   // Get bus stops within map bounds,
   function getBusStops() {

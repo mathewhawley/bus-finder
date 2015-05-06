@@ -21,8 +21,9 @@ var GeoSearch = function(map) {
   function success(position) {
     var lat = position.coords.latitude,
         lng = position.coords.longitude,
-        newCoords = new google.maps.LatLng(lat, lng);
-    map.setCurrentPosition(newCoords);
+        newPos = new google.maps.LatLng(lat, lng);
+    map.setCurrentLocation(newPos);
+    map.addMarker(newPos);
   }
 
   function fail() {

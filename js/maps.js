@@ -19,16 +19,27 @@ var Map = function() {
     mainMap = new google.maps.Map(mapDiv, mapOptions);
   }
 
-  function setCurrentPosition(newCoords) {
+  function setCurrentLocation(position) {
     mainMap.setOptions({
-      center: newCoords,
+      center: position,
       zoom: 17
     });
   }
 
+  function addMarker(position) {
+    var customMarkerImage = '../images/markers/user_location_marker.svg';
+    var marker = new google.maps.Marker({
+      position: position,
+      map: mainMap,
+      icon: customMarkerImage
+    });
+  }
+
+
   return {
     mainInit: mainInit,
-    setCurrentPosition: setCurrentPosition
+    setCurrentLocation: setCurrentLocation,
+    addMarker: addMarker
   };
 
 };
