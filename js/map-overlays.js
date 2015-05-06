@@ -29,7 +29,43 @@ var MapOverlay = function(mainMap) {
         labelClass: 'marker-label',
         labelInBackground: false
       });
+
+      attachInfoWindow(marker, el);
       markerArray.push(marker);
+    });
+  }
+
+  function attachInfoWindow(marker, el) {
+    var infoWindowContent = '<p class="iw-title">' + el.name + '</p>';
+
+    el.routes.forEach(function(route) {
+      infoWindowContent += '<p class="iw-route-item">' + route.name + '</p>'
+    });
+
+    var infowindow = new google.maps.InfoWindow({
+      content: infoWindowContent
+    });
+
+    styleInfoWindow(infowindow);
+
+    google.maps.event.addListener(marker, 'mouseover', function() { infowindow.open(mainMap, marker); });
+    google.maps.event.addListener(marker, 'mouseout', function() { infowindow.close(mainMap, marker); });
+  }
+
+  function styleInfoWindow(el) {
+    google.maps.event.addListener(el, 'domready', function() {
+      var iwOuter = $('.gm-style-iw');
+      var iwBackground = iwOuter.prev();
+      
+      // Removes close button
+      iwOuter.next().css({'display' : 'none'});
+      // Removes arrow and background arrow
+      iwBackground.children(':nth-child(1)').css({'display' : 'none'});
+      iwBackground.children(':nth-child(3)').css({'display' : 'none'});
+      // Remove the background shadow DIV
+      iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+      // Remove the white background DIV
+      iwBackground.children(':nth-child(4)').css({'display' : 'none'});
     });
   }
 

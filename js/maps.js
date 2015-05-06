@@ -5,7 +5,7 @@ var Map = function() {
 
   function mainInit() {
     createMainMap();
-    enableOverlays();
+    initOverlays();
   }
 
   function createMainMap() {
@@ -25,7 +25,7 @@ var Map = function() {
     mainMap = new google.maps.Map(mapDiv, mapOptions);
   }
 
-  function enableOverlays() {
+  function initOverlays() {
     mapOverlay = new MapOverlay(mainMap);
   }
 
