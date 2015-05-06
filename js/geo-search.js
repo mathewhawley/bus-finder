@@ -22,7 +22,7 @@ var GeoSearch = function(map) {
     var lat = position.coords.latitude,
         lng = position.coords.longitude,
         newPos = new google.maps.LatLng(lat, lng);
-    map.setCurrentLocation(newPos);
+    map.setNewLocation(newPos);
     map.addMarker(newPos);
   }
 
@@ -33,4 +33,5 @@ var GeoSearch = function(map) {
   return {
     init: init
   };
+  
 };

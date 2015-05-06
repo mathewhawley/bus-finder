@@ -19,7 +19,7 @@ var Map = function() {
     mainMap = new google.maps.Map(mapDiv, mapOptions);
   }
 
-  function setCurrentLocation(position) {
+  function setNewLocation(position) {
     mainMap.setOptions({
       center: position,
       zoom: 17
@@ -38,7 +38,7 @@ var Map = function() {
 
   return {
     mainInit: mainInit,
-    setCurrentLocation: setCurrentLocation,
+    setNewLocation: setNewLocation,
     addMarker: addMarker
   };
 
