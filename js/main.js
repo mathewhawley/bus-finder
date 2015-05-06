@@ -5,9 +5,8 @@ $(document).ready(function() {
     var map = null;
 
     // Reset map
-    document.getElementById('js-reset-map').addEventListener('click', function() {
-      document.location.reload();
-    });
+    var resetButton = document.getElementById('js-reset-map')
+    resetButton.addEventListener('click', reset);
 
     function init() {
       createMainMap();
@@ -22,6 +21,10 @@ $(document).ready(function() {
     function enableSearch() {
       var search = new Search(map);
       search.init();
+    }
+
+    function reset() {
+      document.location.reload();
     }
 
     return {
