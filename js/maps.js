@@ -42,11 +42,11 @@ var Map = function() {
   }
 
   function getNewBounds() {
-    var swLat = mainMap.getBounds().getNorthEast().lat(),
-        swLng = mainMap.getBounds().getNorthEast().lng(),
-        neLat = mainMap.getBounds().getSouthWest().lat(),
-        neLng = mainMap.getBounds().getSouthWest().lng();
-    return [swLat, swLng, neLat, neLng];
+    var neLat = mainMap.getBounds().getNorthEast().lat(),
+        neLng = mainMap.getBounds().getNorthEast().lng(),
+        swLat = mainMap.getBounds().getSouthWest().lat(),
+        swLng = mainMap.getBounds().getSouthWest().lng();
+    return [neLat, neLng, swLat, swLng];
   }
 
   return {
