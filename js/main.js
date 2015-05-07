@@ -4,11 +4,8 @@ $(document).ready(function() {
 
     var map = null;
 
-    // Reset map
-    var resetButton = document.getElementById('js-reset-map')
-    resetButton.addEventListener('click', reset);
-
     function init() {
+      document.getElementById('js-reset-map').addEventListener('click', reset);
       createMainMap();
       enableSearch();
     }
