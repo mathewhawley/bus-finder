@@ -29,8 +29,8 @@ var Search = function(map) {
   // Place search
   function repositionMap() {
     addLoader();
-    var newLat = autocomplete.getPlace().geometry.location.j,
-        newLng = autocomplete.getPlace().geometry.location.C;
+    var newLat = autocomplete.getPlace().geometry.location.lat(),
+        newLng = autocomplete.getPlace().geometry.location.lng();
     newPos = new google.maps.LatLng(newLat, newLng);
     map.setNewLocation(newPos);
     map.addMarker(newPos);
@@ -99,7 +99,7 @@ var Search = function(map) {
         stopRoutes.innerHTML += '<p class="stop-route-item">' + route.name + '</p>'
       });
       // Create modal for each listed bus stop
-      modal.createModal(null, el, itemWrapper);
+      modal.attachModal(null, el, itemWrapper);
       // Append each complete result to the view
       resultsContainer.appendChild(itemWrapper);
     });

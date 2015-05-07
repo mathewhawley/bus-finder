@@ -32,7 +32,7 @@ var MapOverlay = function(mainMap) {
         labelInBackground: false
       });
       attachInfoWindow(marker, el);
-      modal.createModal(marker, el, null);
+      modal.attachModal(marker, el, null);
       markerArray.push(marker);
     });
   }
@@ -56,7 +56,6 @@ var MapOverlay = function(mainMap) {
     google.maps.event.addListener(el, 'domready', function() {
       var iwOuter = $('.gm-style-iw');
       var iwBackground = iwOuter.prev();
-
       // Removes close button
       iwOuter.next().css({'display' : 'none'});
       // Removes arrow and background arrow

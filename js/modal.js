@@ -5,7 +5,7 @@ var Modal = function() {
   var modalCloseBtn = document.getElementById('js-modal-close-btn');
   modalCloseBtn.addEventListener('click', closeModal);
 
-  function createModal(marker, el, listElement) {
+  function attachModal(marker, el, listElement) {
     if (marker === null) {
       dashboardModal(listElement, el);
     }
@@ -116,7 +116,7 @@ var Modal = function() {
   }
 
   return {
-    createModal: createModal
+    attachModal: attachModal
   };
 
 };

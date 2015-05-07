@@ -42,10 +42,10 @@ var Map = function() {
   }
 
   function getNewBounds() {
-    var swLat = mainMap.getBounds().Ga.C,
-        swLng = mainMap.getBounds().xa.j,
-        neLat = mainMap.getBounds().Ga.j,
-        neLng = mainMap.getBounds().xa.C;
+    var swLat = mainMap.getBounds().getNorthEast().lat(),
+        swLng = mainMap.getBounds().getNorthEast().lng(),
+        neLat = mainMap.getBounds().getSouthWest().lat(),
+        neLng = mainMap.getBounds().getSouthWest().lng();
     return [swLat, swLng, neLat, neLng];
   }
 
