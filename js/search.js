@@ -30,8 +30,8 @@ var Search = function(map) {
   function repositionMap() {
     addLoader();
     var newLat = autocomplete.getPlace().geometry.location.lat(),
-        newLng = autocomplete.getPlace().geometry.location.lng();
-    newPos = new google.maps.LatLng(newLat, newLng);
+        newLng = autocomplete.getPlace().geometry.location.lng(),
+        newPos = new google.maps.LatLng(newLat, newLng);
     map.setNewLocation(newPos);
     map.addMarker(newPos);
     getNearestStops();
